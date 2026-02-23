@@ -106,7 +106,7 @@ Index | Variable | Type | Description
 ### 1.3 Data Mining Goals
 
 **Data Mining Goals:**
-Develop and compare four binary classification models—KNN, Logistic Regression, Decision Trees, and SVM—to predict whether a client will subscribe to a term deposit. The models will use the available client, campaign, and economic features.
+Develop and compare four binary classification models-KNN, Logistic Regression, Decision Trees, and SVM-to predict whether a client will subscribe to a term deposit. The models will use the available client, campaign, and economic features.
 
 **Success Criteria:**
 Identify the best-performing model with at least 85% accuracy and an AUC-ROC of 0.45 or higher using stratified cross-validation. The model should also demonstrate a meaningful lift over the baseline conversion rate and provide clear outputs such as feature importance and a confusion matrix to support business interpretation.
@@ -171,6 +171,13 @@ From a numeric perspective, macroeconomic variables such as employment variation
 
 Overall, prior campaign success, certain job categories (student, retired), higher education levels, and campaign timing appear to be the most meaningful drivers of subscription behavior.
 
+
+<!-- Data exploration plots -->
+![Data exploration overview](plots/01_data_exploration_overview.png)
+
+![Monthly subscription rates](plots/03_monthly_subscription_rates.png)
+
+![Correlation matrix (numeric features)](plots/04_correlation_matrix_numeric_features.png)
 
 ## 3. Data Preparation
 
@@ -312,6 +319,9 @@ No data integration was required.
 | Decision Tree Default       | 0.335983 | 0.847863       | 0.258129     | 0.627471      | 0.330553  | 0.341595 | 0.912151    | 0.626873          | 0.258406    |
 | SVM Linear Default          | 0.464013 | 0.83815        | 0.286126     | 0.781607      | 0.370109  | 0.621767 | 0.865627    | 0.743697          | 1511.018178 |
 
+<!-- Default model comparison plot -->
+![Default model metrics comparison](plots/06_model_comparison_default_model_metrics_comparison.png)
+
 
 ### 4.4 Assess Model(No Tuning)
 
@@ -365,6 +375,9 @@ Here’s the HTML table converted into a Markdown table:
 | Decision Tree Tuned       | 0.519113 | 0.876275       | 0.359673     | 0.797934      | 0.461797  | 0.592672 | 0.912288    | 0.75248           | 0.134682  | {'max_depth': 7, 'min_samples_leaf': 4, 'min_s...'} |
 | SVM Linear Tuned          | 0.467113 | 0.835721       | 0.313096     | 0.79243       | 0.368094  | 0.639009 | 0.860701    | 0.749855          | 17.406357 | {'C': 0.1, 'gamma': 'scale'}                        |
 
+<!-- Tuned & final comparison plots -->
+![Tuned model metrics comparison](plots/06_model_comparison_tuned_model_metrics_comparison.png)
+
 
 ### 4.6 Assess Results With Tuning
 
@@ -382,7 +395,7 @@ Here’s the HTML table converted into a Markdown table:
 
 * **KNN saw minimal improvement after tuning.**   
 
-  Its behavior remained largely the same — strong specificity but weaker recall. This means it tends to miss a significant portion of the minority class, limiting its usefulness in this imbalanced business problem.
+  Its behavior remained largely the same - strong specificity but weaker recall. This means it tends to miss a significant portion of the minority class, limiting its usefulness in this imbalanced business problem.
 
 * **Dummy Baseline highlights the imbalance challenge.**   
 
@@ -404,6 +417,8 @@ Tuning meaningfully improved only the Decision Tree, elevating it to the top-per
 | Decision Tree Tuned         | Tuned      | 0.519113 | 0.876275       | 0.359673     | 0.797934      | 0.461797  | 0.592672 | 0.912288    | 0.75248           | 0.134682    |
 | SVM Linear Tuned            | Tuned      | 0.467113 | 0.835721       | 0.313096     | 0.79243       | 0.368094  | 0.639009 | 0.860701    | 0.749855          | 17.406357   |
 
+![Final model comparison (Default vs Tuned)](plots/06_model_comparison_final_all_model_metrics_comparison.png)
+
 
 ## 5. Evaluation
 
@@ -419,7 +434,7 @@ From a business perspective, this means fewer wasted calls while still capturing
 
 The dummy model achieves high accuracy simply by predicting “no” for everyone. However, it completely fails to identify potential subscribers.
 
-In contrast, the Decision Tree meaningfully improves minority class detection while maintaining strong overall performance — making it actionable for real campaign targeting.
+In contrast, the Decision Tree meaningfully improves minority class detection while maintaining strong overall performance - making it actionable for real campaign targeting.
 
 
 **Approved Secondary Model: Logistic Regression**
@@ -445,7 +460,7 @@ The Decision Tree is recommended for operational use, while Logistic Regression 
 
 **Methodology**
 
-The project followed the CRISP-DM framework end-to-end — from business understanding through data preparation, modeling, and evaluation.
+The project followed the CRISP-DM framework end-to-end - from business understanding through data preparation, modeling, and evaluation.
 
 Multiple classifiers were tested and compared systematically, including KNN, Logistic Regression, Decision Tree, and SVM.
 
@@ -674,7 +689,7 @@ These references support the methodology, dataset, deployment, and monitoring st
 
 #### **Dataset Reference**
 
-1. **UCI Machine Learning Repository — Bank Marketing Dataset**
+1. **UCI Machine Learning Repository - Bank Marketing Dataset**
    *Source of dataset (2008–2010 Portuguese bank telemarketing data; ~11% term deposit conversion).*
    *Details Referenced:* Historical data limitations, class imbalance, business context for campaign targeting.
    [Link](https://archive.ics.uci.edu/dataset/222/bank+marketing)
@@ -685,41 +700,41 @@ These references support the methodology, dataset, deployment, and monitoring st
    *Provides structure for “Determine Next Steps” task and deployment planning.*
    [Link](https://www.ibm.com/docs/en/spss-modeler/SaaS?topic=dm-crisp-methodology)
 
-3. **KDnuggets — CRISP-DM for Data Mining Projects**
+3. **KDnuggets - CRISP-DM for Data Mining Projects**
    *Practical examples of moving from model evaluation to pilot/deployment phases.*
    [Link](https://www.kdnuggets.com/2007/12/crispdm-still-best-practice-analytics-data-mining.html)
 
-4. **Data Science PM — CRISP-DM Methodology Guide**
+4. **Data Science PM - CRISP-DM Methodology Guide**
    *Detailed guidance on deployment options, resource considerations, and business rationale.*
    [Link](https://www.datascience-pm.com/crisp-dm-2/)
 
-5. **Towards Data Science — CRISP-DM in Practice**
+5. **Towards Data Science - CRISP-DM in Practice**
    *Case studies showing pilot deployment strategies for imbalanced classification models.*
    [Link](https://towardsdatascience.com/crisp-dm-ready-for-machine-learning-projects-2aad9172056a)
 
 #### **Monitoring & Maintenance References**
 
-6. **CRISP‑ML(Q) — Monitoring and Maintenance in ML Lifecycle**
+6. **CRISP‑ML(Q) - Monitoring and Maintenance in ML Lifecycle**
    *Describes ongoing monitoring, retraining, and model staleness prevention.*
    [Link](https://ml-ops.org/content/crisp-ml?utm_source=chatgpt.com)
 
-7. **AWS Well‑Architected Machine Learning Lens — Monitoring Best Practices**
+7. **AWS Well‑Architected Machine Learning Lens - Monitoring Best Practices**
    *Continuous monitoring against business metrics and model drift management.*
    [Link](https://docs.aws.amazon.com/wellarchitected/latest/machine-learning-lens/mlops01-bp03.html?utm_source=chatgpt.com)
 
-8. **Sanfoundry — Model Monitoring and Maintenance**
+8. **Sanfoundry - Model Monitoring and Maintenance**
    *Key maintenance activities: retraining, versioning, automated pipelines, SLAs.*
    [Link](https://www.sanfoundry.com/model-monitoring-and-maintenance-in-data-science/?utm_source=chatgpt.com)
 
-9. **Acceldata Blog — ML Monitoring Challenges and Best Practices**
+9. **Acceldata Blog - ML Monitoring Challenges and Best Practices**
    *Baselines, real-time metrics, automated retraining triggers, logging.*
    [Link](https://www.acceldata.io/blog/ml-monitoring-challenges-and-best-practices-for-production-environments?utm_source=chatgpt.com)
 
-10. **DS STREAM — Model Monitoring & Drift Detection**
+10. **DS STREAM - Model Monitoring & Drift Detection**
     *Tracking data and concept drift, dashboards, alerting systems.*
     [Link](https://www.dsstream.com/provider/model-monitoring-drift-detection?utm_source=chatgpt.com)
 
-11. **ML Systems Textbook — Monitoring & Maintenance Stage**
+11. **ML Systems Textbook - Monitoring & Maintenance Stage**
     *Differentiates monitoring and maintenance; ensures deployed models remain effective.*
     [Link](https://mlsysbook.ai/contents/core/workflow/workflow?utm_source=chatgpt.com)
 
